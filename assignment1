@@ -1,0 +1,42 @@
+#Wu Sunjie assignment1
+import os 
+import shutil 
+
+path = os.getcwd()
+path1 = os.getcwd() + (r'\dir1')
+path2 = os.getcwd() + (r'\dir2')
+path3 = os.getcwd() + (r'\dir3')
+
+#create dir
+if not os.path.exists(path1):
+    os.makedirs(path1)
+else:
+    print('dir1 already exists')
+
+if not os.path.exists(path2):
+    os.makedirs(path2)
+else:
+    print('dir2 already exists')
+
+if not os.path.exists(path3):
+    os.makedirs(path3)
+else:
+    print('dir3 already exists')
+
+#delete dir1
+os.rmdir(path1)
+
+#list folders and subdirectories
+os.chdir(os.path.pardir)
+
+dirs = os.listdir(os.getcwd())
+for file in dirs:
+    print(file)
+
+for dirpath, dirnames, filenames in os.walk(os.getcwd()):
+    print('Dir',dirpath)
+    for filename in filenames:
+        print('File',filename)
+
+#moving file
+shutil.move(path+'\dir3', path+'\dir2')
