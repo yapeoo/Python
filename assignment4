@@ -1,1 +1,26 @@
 #@Wu Sunjie assignment4
+import shutil
+import os 
+
+# 设置定长缓冲区 
+path = './test.txt' 
+with open(path, 'w+', encoding='utf-8', buffering=20) as f:
+    f.write('hello') 
+    f.write('hello') 
+    
+# 设置行缓冲 
+with open(path, 'w+', encoding='utf-8', buffering=1) as f: 
+    f.write('hello \n') 
+    f.write('hello1 \n') 
+    f.write('hello2 \n') 
+    
+# 设置无缓冲 
+with open(path, 'wb+', buffering=0) as f: 
+    f.write(b'hello') 
+    f.write(b'hello1') 
+
+    f.close() 
+    f1 = './test.txt' 
+    f2 = './test/2' 
+    shutil.move(f1, f2) 
+    os.remove('./test/2/test.txt')
