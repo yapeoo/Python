@@ -1,1 +1,24 @@
 #@Wu Sunjie assignment2
+import os 
+import shutil 
+
+# 1.create file
+str_bytes = '010101'.encode() 
+with open('hello.bin', 'wb') as file: 
+    file.write(str_bytes) 
+    file.flush()
+# os.chmod('hello.bin', stat.S_IREAD) 
+
+# 2.move file
+test_dir = os.getcwd() + r'\test' 
+if ~os.path.exists(test_dir): 
+    os.makedirs(test_dir) 
+shutil.move('hello.bin', test_dir) 
+
+# 3.read file 
+file_path = test_dir + r'\hello.bin' 
+with open(file_path, 'rb') as file: 
+    print(file.read(len(str_bytes)))  
+    
+#4.delete file 
+os.remove(file_path)
