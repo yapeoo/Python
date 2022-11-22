@@ -1,1 +1,29 @@
 #@Wu Sunjie assignment3
+import os 
+import shutil 
+
+path = os.getcwd()
+
+# 1.create log file
+file = open(path + '\log.log','w') 
+file.close()
+
+# 2.move file
+#shutil.move("D:\\PycharmProjects\\文件\\日志.log","D:\\PycharmProjects\\日志文件\\日志.log") 
+test_dir = os.getcwd() + r'\test' 
+if ~os.path.exists(test_dir): 
+    os.makedirs(test_dir) 
+shutil.move('log.log', test_dir) 
+
+# 3.add data
+with open(test_dir + '\log.log','a') as f:
+    f.write('log File. Wu Sunjie write') 
+    f.close() 
+
+# 4.read file 
+file_path = test_dir + r'\log.log' 
+with open(file_path, 'rb') as file: 
+    print(file.readline()) 
+
+# 5.delete file 
+os.remove(test_dir + '\log.log')
